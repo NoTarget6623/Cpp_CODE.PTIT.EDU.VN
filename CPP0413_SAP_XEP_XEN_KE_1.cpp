@@ -32,18 +32,17 @@ int main(){
     int t = 1;
     cin >> t;cin.ignore();
     while(t--){
-        int n,k;
-        cin >> n >> k;
+        int n;
+        cin >> n;
         vector <int> a;
         a.assign(n + 1,0);
         foru(i,1,n) cin >> a[i];
-        int ans = 0;
-        foru(i,1,n) foru(j,i + 1,n){
-            if(a[i] + a[j] == k){
-                ans++;
-            }
-        }
-        cout << ans << "\n";
+        sort(a.begin() + 1,a.end());
+        int i = 1,j = n;
+        while(i <= j){
+            cout << a[j] << " ",j--;
+            if(i <= j) cout << a[i] << " ";i++;
+        }el;
     }
 }
 

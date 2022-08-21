@@ -27,23 +27,22 @@
 
 using namespace std;
 
+int Check(char x){
+    if(x == 'u' || x =='e' || x == 'o' || x == 'a' || x == 'i' || x == 'y') return 1;
+    return 0;
+}
+
 int main(){
 	faster;
     int t = 1;
-    cin >> t;cin.ignore();
+    //cin >> t;cin.ignore();
     while(t--){
-        int n,k;
-        cin >> n >> k;
-        vector <int> a;
-        a.assign(n + 1,0);
-        foru(i,1,n) cin >> a[i];
-        int ans = 0;
-        foru(i,1,n) foru(j,i + 1,n){
-            if(a[i] + a[j] == k){
-                ans++;
-            }
-        }
-        cout << ans << "\n";
+        string s;
+        getline(cin,s);
+        transform(s.begin(),s.end(),s.begin(), :: tolower);
+        map <int,int> f;
+        foru(i,0,s.length() - 1) f[i] = Check(s[i]);
+        foru(i,0,s.length() - 1) if(f[i] == 0) cout << "." << s[i];
     }
 }
 

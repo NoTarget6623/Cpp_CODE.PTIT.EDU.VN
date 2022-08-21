@@ -32,18 +32,19 @@ int main(){
     int t = 1;
     cin >> t;cin.ignore();
     while(t--){
-        int n,k;
-        cin >> n >> k;
-        vector <int> a;
-        a.assign(n + 1,0);
-        foru(i,1,n) cin >> a[i];
-        int ans = 0;
-        foru(i,1,n) foru(j,i + 1,n){
-            if(a[i] + a[j] == k){
-                ans++;
+        string s;
+        getline(cin,s);
+        s += " ";
+        int d = 1;
+        foru(i,1,s.length() - 1){
+            if(s[i] == s[i - 1]){
+                d++;
             }
-        }
-        cout << ans << "\n";
+            else{
+                cout << s[i - 1] << d;
+                d = 1;
+            }
+        }el;
     }
 }
 

@@ -32,18 +32,21 @@ int main(){
     int t = 1;
     cin >> t;cin.ignore();
     while(t--){
-        int n,k;
-        cin >> n >> k;
-        vector <int> a;
-        a.assign(n + 1,0);
-        foru(i,1,n) cin >> a[i];
-        int ans = 0;
-        foru(i,1,n) foru(j,i + 1,n){
-            if(a[i] + a[j] == k){
-                ans++;
-            }
+        string s;
+        getline(cin,s);
+        stringstream ss(s);
+        string token;
+        vector <string> x;
+        while (ss >> token){ 
+            x.push_back(token);
         }
-        cout << ans << "\n";
+        int l = x.size();
+        int c = 0;
+        for(auto i : x){
+            if(i[i.length() - 1] % 2 == 0)c++;
+            else c--;
+        }
+        Y_N((l % 2 == 0 && c > 0) || (l % 2 == 1 && c < 0));
     }
 }
 

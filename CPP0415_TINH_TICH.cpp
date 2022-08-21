@@ -32,18 +32,14 @@ int main(){
     int t = 1;
     cin >> t;cin.ignore();
     while(t--){
-        int n,k;
-        cin >> n >> k;
-        vector <int> a;
+        int n,m;
+        cin >> n >> m;cin.ignore();
+        vector <int> a,b;
         a.assign(n + 1,0);
+        b.assign(m + 1,0);
         foru(i,1,n) cin >> a[i];
-        int ans = 0;
-        foru(i,1,n) foru(j,i + 1,n){
-            if(a[i] + a[j] == k){
-                ans++;
-            }
-        }
-        cout << ans << "\n";
+        foru(i,1,m) cin >> b[i];
+        cout << (*max_element(a.begin() + 1,a.end())) * (*min_element(b.begin() + 1,b.end())) << "\n";
     }
 }
 
