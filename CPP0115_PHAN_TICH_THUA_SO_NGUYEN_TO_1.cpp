@@ -42,7 +42,7 @@ int main(){
                 cout << i << " " << d << " ";
             }
         }
-        el;
+        cout << "\n";
     }
 }
 
