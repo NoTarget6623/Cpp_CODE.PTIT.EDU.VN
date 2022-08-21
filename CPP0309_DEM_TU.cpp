@@ -33,15 +33,17 @@ int main(){
     while(t--){
         string s;
         getline(cin,s);
-        int k;
-        cin >> k;cin.ignore();
+        s += " ";
+        int ans = 0;
         int c = 0;
-        if(s.length() >= 26){
-            set <char> a;
-            for(auto i : s) a.insert(i);
-            if(26 - a.size() <= k) c = 1;
+        foru(i,0,s.length() - 1){
+            if(s[i] == ' ' || s[i] == '\n' || s[i] == '\t'){
+                ans += c;
+                c = 0;
+            }
+            else c = 1;
         }
-        cout << c << "\n";
+        cout << ans << "\n";
     }
 }
 

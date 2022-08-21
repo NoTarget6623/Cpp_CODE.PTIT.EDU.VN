@@ -29,19 +29,14 @@ using namespace std;
 int main(){
 	faster;
     int t = 1;
-    cin >> t;cin.ignore();
+    cin >> t; cin.ignore();
     while(t--){
         string s;
-        getline(cin,s);
-        int k;
-        cin >> k;cin.ignore();
-        int c = 0;
-        if(s.length() >= 26){
-            set <char> a;
-            for(auto i : s) a.insert(i);
-            if(26 - a.size() <= k) c = 1;
-        }
-        cout << c << "\n";
+        cin >> s;
+        map <char,int> f;
+        for(auto i : s) f[i]++;
+        for(auto i : s) if(f[i] == 1) cout << i;
+        el;
     }
 }
 

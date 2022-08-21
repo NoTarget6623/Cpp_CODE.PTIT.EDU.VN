@@ -9,7 +9,6 @@
 #include <map>
 #include <stack>
 #include <queue>
-#include <set>
 
 #define faster ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0)
 #define ll long long
@@ -29,19 +28,15 @@ using namespace std;
 int main(){
 	faster;
     int t = 1;
-    cin >> t;cin.ignore();
+    cin >> t; cin.ignore();
     while(t--){
-        string s;
-        getline(cin,s);
-        int k;
-        cin >> k;cin.ignore();
-        int c = 0;
-        if(s.length() >= 26){
-            set <char> a;
-            for(auto i : s) a.insert(i);
-            if(26 - a.size() <= k) c = 1;
-        }
-        cout << c << "\n";
+        int n;
+        cin >> n;
+        vector <int> a;
+        a.assign(n + 1,0);
+        foru(i,1,n) cin >> a[i];
+        sort(a.begin() + 1,a.end());
+        cout << a[n] << "\n";
     }
 }
 

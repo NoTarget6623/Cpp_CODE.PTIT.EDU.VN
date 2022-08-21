@@ -29,19 +29,17 @@ using namespace std;
 int main(){
 	faster;
     int t = 1;
-    cin >> t;cin.ignore();
+    cin >> t; cin.ignore();
     while(t--){
-        string s;
-        getline(cin,s);
-        int k;
-        cin >> k;cin.ignore();
-        int c = 0;
-        if(s.length() >= 26){
-            set <char> a;
-            for(auto i : s) a.insert(i);
-            if(26 - a.size() <= k) c = 1;
-        }
-        cout << c << "\n";
+        int n;
+        cin >> n;
+        vector <int> a;
+        map <int,int> f;
+        a.assign(n + 1,0);
+        foru(i,1,n) cin >> a[i],f[a[i]]++;
+        int ans = 0;
+        foru(i,1,n) if(f[a[i]] > 1) ans += f[a[i]],f[a[i]] = 0;
+        cout << ans << "\n";
     }
 }
 

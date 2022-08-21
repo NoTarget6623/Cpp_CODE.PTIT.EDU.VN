@@ -29,19 +29,26 @@ using namespace std;
 int main(){
 	faster;
     int t = 1;
-    cin >> t;cin.ignore();
+    //cin >> t; cin.ignore();
     while(t--){
-        string s;
-        getline(cin,s);
-        int k;
-        cin >> k;cin.ignore();
-        int c = 0;
-        if(s.length() >= 26){
-            set <char> a;
-            for(auto i : s) a.insert(i);
-            if(26 - a.size() <= k) c = 1;
+        int n,m,p;
+        cin >> n >> m >> p;
+        vector <vector <int>> a,b,ans;
+        a.assign(n + 1,vector <int>(m + 1,0));
+        b.assign(m + 1,vector <int>(p + 1,0));
+        ans.assign(n + 1,vector <int>(p + 1,0));
+        foru(i,1,n) foru(j,1,m) cin >> a[i][j];
+        foru(i,1,m) foru(j,1,p) cin >> b[i][j];
+        foru(i,1,n) foru(j,1,p){
+            foru(k,1,m){
+                ans[i][j] += a[i][k] * b[k][j];
+            }
         }
-        cout << c << "\n";
+        foru(i,1,n){
+            foru(j,1,p){
+                cout << ans[i][j] << " ";
+            } el;
+        }
     }
 }
 
