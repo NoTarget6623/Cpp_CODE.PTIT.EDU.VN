@@ -33,14 +33,14 @@ int main(){
     cin >> t;cin.ignore();
     while(t--){
         string s;
-        getline(cin,s);
-        int d = 0;
-        foru(i,0,s.length() - 1){
-            foru(j,i,s.length() - 1){
-                if(s[i] == s[j]) d++;
-            }
+        cin >> s;
+        if(s.length() % 2 == 1) s = "0" + s;
+        ll Sum = 0;
+        for(int i = 1;i < s.length();i += 2){
+            Sum += (s[i - 1] - '0') * 10 + (s[i] - '0');
         }
-        cout << d << "\n";
+        if(Sum % 11 == 0) cout << "1\n";
+        else cout << "0\n";
     }
 }
 

@@ -30,17 +30,35 @@ using namespace std;
 int main(){
 	faster;
     int t = 1;
-    cin >> t;cin.ignore();
+    //cin >> t;cin.ignore();
     while(t--){
-        string s;
-        getline(cin,s);
-        int d = 0;
-        foru(i,0,s.length() - 1){
-            foru(j,i,s.length() - 1){
-                if(s[i] == s[j]) d++;
-            }
+        int n,k;
+        cin >> n >> k;
+        int n9 = k / 9;
+        if(n9 == n && n9 * 9 == k){
+            foru(i,1,n) cout << 9; 
+            cout << " ";
+            foru(i,1,n) cout << 9;
+            return 0;
         }
-        cout << d << "\n";
+        if(n9 < n){
+            k -= n9 * 9;
+            // Nho nhat
+            if(n - n9 == 1) cout << k;
+            else{
+                cout << 1;
+                foru(i,1,n - n9 - 2) cout << 0;
+                cout << k - 1;
+            }
+            foru(i,1,n9) cout << 9;
+            // Lon nhat
+            cout << " ";
+            foru(i,1,n9) cout << 9;
+            cout << k;
+            foru(i,1,n - n9 - 1) cout << 0;
+            return 0;
+        }
+        cout << -1 << " " << -1;
     }
 }
 

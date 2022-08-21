@@ -30,17 +30,21 @@ using namespace std;
 int main(){
 	faster;
     int t = 1;
-    cin >> t;cin.ignore();
+    //cin >> t;cin.ignore();
     while(t--){
         string s;
         getline(cin,s);
-        int d = 0;
-        foru(i,0,s.length() - 1){
-            foru(j,i,s.length() - 1){
-                if(s[i] == s[j]) d++;
-            }
+        transform(s.begin(),s.end(),s.begin(), :: tolower);
+        stringstream ss(s);
+        string token;
+        vector <string> x;
+        while (ss >> token){ 
+            x.push_back(token);
         }
-        cout << d << "\n";
+        string ans = "";
+        foru(i,0,x.size() - 2) ans += x[i][0];
+        ans = x[x.size() - 1] + ans + "@ptit.edu.vn";
+        cout << ans;
     }
 }
 

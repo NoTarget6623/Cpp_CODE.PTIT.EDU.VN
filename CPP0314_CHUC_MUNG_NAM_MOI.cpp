@@ -30,17 +30,17 @@ using namespace std;
 int main(){
 	faster;
     int t = 1;
-    cin >> t;cin.ignore();
+    //cin >> t;cin.ignore();
     while(t--){
-        string s;
-        getline(cin,s);
-        int d = 0;
-        foru(i,0,s.length() - 1){
-            foru(j,i,s.length() - 1){
-                if(s[i] == s[j]) d++;
-            }
+        int n;
+        cin >> n;cin.ignore();
+        set <string> a;
+        foru(i,1,n){
+            string s;
+            getline(cin,s);
+            a.insert(s);
         }
-        cout << d << "\n";
+        cout << a.size();
     }
 }
 

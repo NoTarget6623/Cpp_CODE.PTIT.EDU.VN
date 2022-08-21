@@ -33,14 +33,17 @@ int main(){
     cin >> t;cin.ignore();
     while(t--){
         string s;
-        getline(cin,s);
-        int d = 0;
-        foru(i,0,s.length() - 1){
-            foru(j,i,s.length() - 1){
-                if(s[i] == s[j]) d++;
+        cin >> s;
+        int d = 1;
+        int ans = 0;
+        ford(i,s.length() - 1,0){
+            d %= 10;
+            if(s[i] == '1'){
+                ans += d;
             }
+            d *= 2;
         }
-        cout << d << "\n";
+        Y_N(ans % 5 == 0);
     }
 }
 

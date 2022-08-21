@@ -30,17 +30,26 @@ using namespace std;
 int main(){
 	faster;
     int t = 1;
-    cin >> t;cin.ignore();
+    //cin >> t;cin.ignore();
     while(t--){
         string s;
         getline(cin,s);
-        int d = 0;
-        foru(i,0,s.length() - 1){
-            foru(j,i,s.length() - 1){
-                if(s[i] == s[j]) d++;
-            }
+        transform(s.begin(),s.end(),s.begin(), :: tolower);
+        stringstream ss(s);
+        string token;
+        vector <string> x;
+        while (ss >> token){ 
+            x.push_back(token);
         }
-        cout << d << "\n";
+        foru(i,0,x.size() - 1){
+            x[i][0] -= 'a' - 'A';
+            if(i == 0) cout << x[i];
+            else if(i == x.size() - 1){
+                transform(x[i].begin(),x[i].end(),x[i].begin(), :: toupper);
+                cout << ", " << x[i];
+            }
+            else cout << " " << x[i];
+        }
     }
 }
 
