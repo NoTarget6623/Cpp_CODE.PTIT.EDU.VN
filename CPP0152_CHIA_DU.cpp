@@ -30,21 +30,16 @@ int main(){
     int t = 1;
     cin >> t; cin.ignore();
     while(t--){
-        int n;
-        cin >> n;
-        vector <int> a;
-        a.assign(n + 1,0);
-        foru(i,1,n) cin >> a[i];
-        int l = 0,r = 2 * n;
-        while(l < r){
-            int m = (l + r)/2;
-            if(a[m] > a[m - 1] && a[m] > a[m + 1]){
-                cout << a[m] << "\n";
-                break;
+        int a,m;
+        cin >> a >> m;
+        int c = 0;
+        foru(i,0,m - 1){
+            if((i * a) % m == 1){
+                c = 1;
+                cout << i << "\n";
             }
-            if(a[m] > a[m - 1] && a[m] < a[m + 1]) l = m + 1;
-            else r = m - 1;
         }
+        if(c == 0) cout << "-1\n";
     }
 }
 

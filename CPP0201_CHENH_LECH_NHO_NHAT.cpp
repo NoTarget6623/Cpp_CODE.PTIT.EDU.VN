@@ -35,16 +35,10 @@ int main(){
         vector <int> a;
         a.assign(n + 1,0);
         foru(i,1,n) cin >> a[i];
-        int l = 0,r = 2 * n;
-        while(l < r){
-            int m = (l + r)/2;
-            if(a[m] > a[m - 1] && a[m] > a[m + 1]){
-                cout << a[m] << "\n";
-                break;
-            }
-            if(a[m] > a[m - 1] && a[m] < a[m + 1]) l = m + 1;
-            else r = m - 1;
-        }
+        sort(a.begin() + 1,a.end());
+        int ans = INT_MAX;
+        foru(i,2,n) ans = min(ans,a[i] - a[i - 1]);
+        cout << ans << "\n";
     }
 }
 

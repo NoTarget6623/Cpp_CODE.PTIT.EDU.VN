@@ -25,26 +25,37 @@
 
 using namespace std;
 
+int Prime[Nmax+1];
+void Sieve(){
+    for(int i = 2;i <= Nmax;i++){
+        Prime[i] = 1;
+    }
+    for(int i = 2;i * i <= Nmax;i++){
+        if(Prime[i] == 1){
+            for(int j = i*i;j <= Nmax;j += i){
+                Prime[j] = 0;
+            }
+        }
+    }
+}
+
 int main(){
 	faster;
     int t = 1;
+    Sieve();
     cin >> t; cin.ignore();
     while(t--){
         int n;
+        int c = 0;
         cin >> n;
-        vector <int> a;
-        a.assign(n + 1,0);
-        foru(i,1,n) cin >> a[i];
-        int l = 0,r = 2 * n;
-        while(l < r){
-            int m = (l + r)/2;
-            if(a[m] > a[m - 1] && a[m] > a[m + 1]){
-                cout << a[m] << "\n";
+        foru(i,2,n){
+            if(Prime[n - i] == 1){
+                c = 1;
+                cout << i << " " << n - i;
                 break;
             }
-            if(a[m] > a[m - 1] && a[m] < a[m + 1]) l = m + 1;
-            else r = m - 1;
         }
+        cout << "\n";
     }
 }
 
