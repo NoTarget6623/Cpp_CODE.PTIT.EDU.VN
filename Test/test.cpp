@@ -25,14 +25,15 @@
 
 using namespace std;
 
-vector <int> Prime;
+int Prime[Nmax+1];
 void Sieve(){
-    Prime.assign(Nmax + 1,INT_MAX);
-    Prime[1] = 1;
+    for(int i = 2;i <= Nmax;i++){
+        Prime[i] = 1;
+    }
     for(int i = 2;i * i <= Nmax;i++){
-        if(Prime[i] == INT_MAX){
-            for(int j = i;j <= Nmax;j += i){
-                Prime[j] = min(Prime[j],i);
+        if(Prime[i] == 1){
+            for(int j = i*i;j <= Nmax;j += i){
+                Prime[j] = 0;
             }
         }
     }
@@ -41,14 +42,13 @@ void Sieve(){
 int main(){
 	faster;
     int t = 1;
-    cin >> t; cin.ignore();
     Sieve();
+    cin >> t; cin.ignore();
     while(t--){
-        int n;
-        cin >> n;
-        ll ans = 1;
-        foru(i,1,n) ans *= Prime[i];
-        cout << ans << "\n";
+        int l,r;
+        cin >> l >> r;
+        foru(i,l,r) if(Prime[i] == 1) cout << i << " "; 
+        el;
     }
 }
 
