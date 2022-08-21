@@ -30,19 +30,19 @@ int main(){
     int t = 1;
     cin >> t; cin.ignore();
     while(t--){
-        int n,k;
-        cin >> n >> k;
-        foru(i,2,n){
+        ll n;
+        cin >> n;
+        ll ans = 0;
+        for(int i = 2;i * i <= n;i++){
             if(n % i == 0){
+                ans = i;
                 while(n % i == 0){
-                    k--;
                     n /= i;
                 }
-                if(k <= 0) cout << i << "\n";
-                break;
             }
         }
-        if(k > 0) cout << "-1\n";
+        if(n != 1) ans = max(ans,n);
+        cout << ans << "\n";
     }
 }
 

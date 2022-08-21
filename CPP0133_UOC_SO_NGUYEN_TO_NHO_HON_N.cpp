@@ -25,24 +25,30 @@
 
 using namespace std;
 
+int Prime[Nmax+1];
+void Sieve(){
+    for(int i = 2;i <= Nmax;i++){
+        Prime[i] = 1;
+    }
+    for(int i = 2;i * i <= Nmax;i++){
+        if(Prime[i] == 1){
+            for(int j = i*i;j <= Nmax;j += i){
+                Prime[j] = 0;
+            }
+        }
+    }
+}
+
 int main(){
 	faster;
     int t = 1;
+    Sieve();
     cin >> t; cin.ignore();
     while(t--){
-        int n,k;
-        cin >> n >> k;
-        foru(i,2,n){
-            if(n % i == 0){
-                while(n % i == 0){
-                    k--;
-                    n /= i;
-                }
-                if(k <= 0) cout << i << "\n";
-                break;
-            }
-        }
-        if(k > 0) cout << "-1\n";
+        int n;
+        cin >> n;
+        foru(i,1,n) if(Prime[i] == 1) cout << i << " "; 
+        el;
     }
 }
 
