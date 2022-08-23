@@ -48,8 +48,8 @@ int main(){
         int n;
         int c = 0;
         cin >> n;
-        foru(i,2,n){
-            if(Prime[n - i] == 1){
+        foru(i,2,n/2){
+            if(Prime[n - i] == 1 && Prime[i] == 1){
                 c = 1;
                 cout << i << " " << n - i << "\n";
                 break;

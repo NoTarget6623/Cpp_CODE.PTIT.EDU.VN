@@ -9,6 +9,8 @@
 #include <map>
 #include <stack>
 #include <queue>
+#include <set>
+#include <sstream>
 
 #define faster ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0)
 #define ll long long
@@ -28,21 +30,11 @@ using namespace std;
 int main(){
 	faster;
     int t = 1;
-    cin >> t; cin.ignore();
+    cin >> t;cin.ignore();
     while(t--){
-        ll n;
-        cin >> n;
-        ll ans = 0;
-        for(int i = 2;i <= sqrt(n);i++){
-            if(n % i == 0){
-                ans = i;
-                while(n % i == 0){
-                    n /= i;
-                }
-            }
-        }
-        if(n != 1) ans = max(ans,n);
-        cout << ans << "\n";
+        ll a,x,y;
+        cin >> a >> x >> y;
+        foru(i,1,__gcd(x,y)) cout << a;el;
     }
 }
 

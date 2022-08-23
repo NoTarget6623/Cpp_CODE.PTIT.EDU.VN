@@ -38,8 +38,10 @@ int main(){
                     k--;
                     n /= i;
                 }
-                if(k <= 0) cout << i << "\n";
-                break;
+                if(k <= 0){
+                    cout << i << "\n";
+                    break;
+                }
             }
         }
         if(k > 0) cout << "-1\n";

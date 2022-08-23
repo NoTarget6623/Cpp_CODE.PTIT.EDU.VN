@@ -9,6 +9,8 @@
 #include <map>
 #include <stack>
 #include <queue>
+#include <set>
+#include <sstream>
 
 #define faster ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0)
 #define ll long long
@@ -25,24 +27,48 @@
 
 using namespace std;
 
+int Prime[Nmax+1];
+void Sieve(){
+    for(int i = 2;i <= Nmax;i++){
+        Prime[i] = 1;
+    }
+    for(int i = 2;i * i <= Nmax;i++){
+        if(Prime[i] == 1){
+            for(int j = i*i;j <= Nmax;j += i){
+                Prime[j] = 0;
+            }
+        }
+    }
+}
+
+int SumNum(int n){
+    int S = 0;
+    while(n > 0){
+        S += n % 10;
+        n /= 10;
+    }
+    return S;
+}
+
 int main(){
 	faster;
     int t = 1;
-    cin >> t; cin.ignore();
+    Sieve();
+    cin >> t;cin.ignore();
     while(t--){
-        ll n;
+        int n;
         cin >> n;
-        ll ans = 0;
-        for(int i = 2;i <= sqrt(n);i++){
-            if(n % i == 0){
-                ans = i;
-                while(n % i == 0){
-                    n /= i;
+        int c = 0;
+        if(Prime[n] == 0){
+            int S = SumNum(n);
+            for(int i = 2;i <= n;i++){
+                if(n % i == 0){
+                    while(n % i == 0) n /= i,S -= SumNum(i);
                 }
             }
+            if(S == 0) c = 1;
         }
-        if(n != 1) ans = max(ans,n);
-        cout << ans << "\n";
+        Y_N(c);
     }
 }
 
