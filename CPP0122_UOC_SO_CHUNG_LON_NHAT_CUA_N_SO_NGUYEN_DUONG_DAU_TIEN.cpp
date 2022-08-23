@@ -9,6 +9,8 @@
 #include <map>
 #include <stack>
 #include <queue>
+#include <set>
+#include <sstream>
 
 #define faster ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0)
 #define ll long long
@@ -25,32 +27,24 @@
 
 using namespace std;
 
-vector <int> Prime;
-void Sieve(){
-    Prime.assign(Nmax + 1,INT_MAX);
-    Prime[1] = 1;
-    for(int i = 2;i * i <= Nmax;i++){
-        if(Prime[i] == INT_MAX){
-            for(int j = i;j <= Nmax;j += i){
-                Prime[j] = min(Prime[j],i);
-            }
-        }
-    }
+ll BCNN(ll x,ll y,ll z){
+    ll a = (x * y) / __gcd(x,y);
+    return (a * z) / __gcd(a,z);
 }
 
 int main(){
 	faster;
     int t = 1;
-    cin >> t; cin.ignore();
-    Sieve();
+    cin >> t;cin.ignore();
     while(t--){
         int n;
         cin >> n;
         ll ans = 1;
-        foru(i,1,n) ans *= Prime[i];
+        for(ll i = 1;i <= n;i++) ans = ans * i / __gcd(ans,i);
         cout << ans << "\n";
     }
 }
+
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P5G#&@@@@@@&BP5B@@@@@@@
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@JP@@@@@@@@@@@@@&Y5@@@@@@
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@5Y@@@@@@@@@@@@@@@@?B@@@@@
@@ -80,4 +74,3 @@ int main(){
 // @@@@@@@@@@#BBBB5##Y#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // @@&B#@GPP#5GBY##BB#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // @@G55&#GG&@##&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    

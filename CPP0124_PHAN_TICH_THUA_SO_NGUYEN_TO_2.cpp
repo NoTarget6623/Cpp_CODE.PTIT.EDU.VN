@@ -30,9 +30,9 @@ int main(){
     int t = 1;
     //cin >> t; cin.ignore();
     while(t--){
-        int n;
+        ll n;
         cin >> n;
-        foru(i,2,n){
+        for(int i = 2;i * i <= n;i++){
             if(n % i == 0){
                 int d = 0;
                 while(n % i == 0){
@@ -42,6 +42,7 @@ int main(){
                 cout << i << " " << d << "\n";
             }
         }
+        if(n != 1) cout << n << " 1";
     }
 }
 

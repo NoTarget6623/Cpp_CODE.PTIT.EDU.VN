@@ -9,8 +9,10 @@
 #include <map>
 #include <stack>
 #include <queue>
+#include <set>
+#include <sstream>
 
-#define faster ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0)
+#define faster ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0)
 #define ll long long
 #define Nmax 1000007
 #define R second
@@ -20,35 +22,50 @@
 #define foru(i, a, b) for (int i = a; i <= b; i++)
 #define ford(i, a, b) for (int i = a; i >= b; i--)
 #define all(a) a.begin() + 1, a.end()
-#define Y_N(x) if (x == 0) cout << "NO\n";else cout << "YES\n";
+#define Y_N(x)          \
+    if (x == 0)         \
+        cout << "NO\n"; \
+    else                \
+        cout << "YES\n";
 #define el cout << "\n"
 
 using namespace std;
 
-int Prime[Nmax+1];
-void Sieve(){
-    for(int i = 2;i <= Nmax;i++){
-        Prime[i] = 1;
-    }
-    for(int i = 2;i * i <= Nmax;i++){
-        if(Prime[i] == 1){
-            for(int j = i*i;j <= Nmax;j += i){
-                Prime[j] = 0;
-            }
-        }
+ll a[100];
+void solve()
+{
+    a[0] = 0;
+    a[1] = 1;
+    for (int i = 2; i <= 93; i++)
+    {
+        a[i] = a[i - 1] + a[i - 2];
     }
 }
-
-int main(){
-	faster;
-    int t = 1;
-    //cin >> t; cin.ignore();
-    Sieve();
-    while(t--){
-        int l,r;
-        cin >> l >> r;
-        if(l > r) swap(l,r);
-        foru(i,l,r) if(Prime[i] == 1) cout << i << " "; 
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    solve();
+    int t;
+    cin >> t;
+    cin.ignore();
+    while (t--)
+    {
+        ll n, flag = 0;
+        cin >> n;
+        for (int i = 0; i <= 93; i++)
+        {
+            if (n == a[i])
+            {
+                cout << "YES";
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 0)
+            cout << "NO";
+        cout << endl;
     }
 }
 

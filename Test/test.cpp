@@ -9,8 +9,6 @@
 #include <map>
 #include <stack>
 #include <queue>
-#include <set>
-#include <sstream>
 
 #define faster ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0)
 #define ll long long
@@ -27,23 +25,30 @@
 
 using namespace std;
 
+int Prime[Nmax+1];
+void Sieve(){
+    for(int i = 2;i <= Nmax;i++){
+        Prime[i] = 1;
+    }
+    for(int i = 2;i * i <= Nmax;i++){
+        if(Prime[i] == 1){
+            for(int j = i*i;j <= Nmax;j += i){
+                Prime[j] = 0;
+            }
+        }
+    }
+}
+
 int main(){
 	faster;
     int t = 1;
-    cin >> t;cin.ignore();
+    //cin >> t; cin.ignore();
+    Sieve();
     while(t--){
-        int n,k;
-        cin >> n >> k;
-        vector <int> a;
-        a.assign(n + 1,0);
-        foru(i,1,n) cin >> a[i];
-        int ans = 0;
-        foru(i,1,n) foru(j,i + 1,n){
-            if(a[i] + a[j] == k){
-                ans++;
-            }
-        }
-        cout << ans << "\n";
+        int l,r;
+        cin >> l >> r;
+        if(l > r) swap(l,r);
+        foru(i,l,r) if(Prime[i] == 1) cout << i << " "; 
     }
 }
 
@@ -76,4 +81,3 @@ int main(){
 // @@@@@@@@@@#BBBB5##Y#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // @@&B#@GPP#5GBY##BB#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // @@G55&#GG&@##&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    
