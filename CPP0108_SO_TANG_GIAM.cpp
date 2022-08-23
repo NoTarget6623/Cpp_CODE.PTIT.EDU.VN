@@ -9,13 +9,14 @@
 #include <map>
 #include <stack>
 #include <queue>
+#include <set>
+#include <sstream>
 
 #define faster ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0)
 #define ll long long
 #define Nmax 1000007
 #define R second
 #define L first
-#define mp make_pair
 #define pb push_back
 #define foru(i, a, b) for (int i = a; i <= b; i++)
 #define ford(i, a, b) for (int i = a; i >= b; i--)
@@ -25,14 +26,49 @@
 
 using namespace std;
 
-vector <int> Prime;
-void Sieve(){
-    Prime.assign(Nmax + 1,INT_MAX);
-    Prime[1] = 1;
-    for(int i = 2;i * i <= Nmax;i++){
-        if(Prime[i] == INT_MAX){
-            for(int j = i;j <= Nmax;j += i){
-                Prime[j] = min(Prime[j],i);
+int Check(ll n){
+    if(n < 2) return 0;
+    for(int i = 2;i <= sqrt(n);i++){
+        if(n % i == 0){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+map <ll,int> mp;
+int ans[11];
+int a[11];
+ll S;
+void Try1(int i){
+    if(i <= 10){
+        foru(j,1,9){
+            if(j > a[i - 1]){
+                a[i] = j;
+                S = S * 10 + a[i];
+                if(Check(S) == 1 && mp[S] == 0){
+                    ans[i]++;
+                    mp[S] = 1;
+                }
+                Try1(i + 1);
+                S /= 10;
+            }
+        }
+    }
+}
+
+void Try2(int i){
+    if(i <= 10){
+        foru(j,1,9){
+            if(j < a[i - 1]){
+                a[i] = j;
+                S = S * 10 + a[i];
+                if(Check(S) == 1 && mp[S] == 0){
+                    ans[i]++;
+                    mp[S] = 1;
+                }
+                Try2(i + 1);
+                S /= 10;
             }
         }
     }
@@ -41,16 +77,16 @@ void Sieve(){
 int main(){
 	faster;
     int t = 1;
-    cin >> t; cin.ignore();
-    Sieve();
+    S = 0; a[0] = 0;Try1(1);
+    S = 0; a[0] = 10;Try2(1);
+    cin >> t;cin.ignore();
     while(t--){
         int n;
         cin >> n;
-        ll ans = 1;
-        foru(i,1,n) ans *= Prime[i];
-        cout << ans << "\n";
+        cout << ans[n] << "\n";
     }
 }
+
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P5G#&@@@@@@&BP5B@@@@@@@
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@JP@@@@@@@@@@@@@&Y5@@@@@@
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@5Y@@@@@@@@@@@@@@@@?B@@@@@
