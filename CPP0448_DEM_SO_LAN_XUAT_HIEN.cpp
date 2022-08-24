@@ -34,17 +34,14 @@ int main(){
     while(t--){
         int n,x;
         cin >> n >> x;
-        vector <int> a;
-        a.assign(n + 1,0);
-        foru(i,1,n) cin >> a[i];
-        int c = 0;
-        foru(i,1,n) if(a[i] == x){
-            cout << i;
-            c = 1;
-            break;
+        int d = 0;
+        for(int i = 1;i <= n;i++){
+            int tmp;
+            cin >> tmp;
+            if(tmp == x) d++;
         }
-        if(c == 0) cout << -1;
-        cout << "\n";
+        if(d == 0) cout << -1 << "\n";
+        else cout << d << "\n";
     }
 }
 

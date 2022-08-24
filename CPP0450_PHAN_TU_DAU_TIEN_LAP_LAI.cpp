@@ -32,19 +32,19 @@ int main(){
     int t = 1;
     cin >> t;cin.ignore();
     while(t--){
-        int n,x;
-        cin >> n >> x;
-        vector <int> a;
-        a.assign(n + 1,0);
-        foru(i,1,n) cin >> a[i];
-        int c = 0;
-        foru(i,1,n) if(a[i] == x){
-            cout << i;
-            c = 1;
-            break;
+        int n;
+        cin >> n;
+        int ans = -1;
+        map <int,int> a;
+        for(int i = 1;i <= n;i++){
+            int tmp;
+            cin >> tmp;
+            a[tmp]++;
+            if(a[tmp] == 2 && ans == -1){
+                ans = tmp;
+            }
         }
-        if(c == 0) cout << -1;
-        cout << "\n";
+        cout << ans << "\n";
     }
 }
 

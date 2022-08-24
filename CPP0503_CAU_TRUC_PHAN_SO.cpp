@@ -27,26 +27,33 @@
 
 using namespace std;
 
-int main(){
-	faster;
-    int t = 1;
-    cin >> t;cin.ignore();
-    while(t--){
-        int n,x;
-        cin >> n >> x;
-        vector <int> a;
-        a.assign(n + 1,0);
-        foru(i,1,n) cin >> a[i];
-        int c = 0;
-        foru(i,1,n) if(a[i] == x){
-            cout << i;
-            c = 1;
-            break;
-        }
-        if(c == 0) cout << -1;
-        cout << "\n";
-    }
+struct PhanSo{
+	ll up;
+	ll down;
+};
+
+void nhap(struct PhanSo &t){
+	cin >> t.up >> t.down;
 }
+
+void rutgon(struct PhanSo &t){
+	int x = __gcd(t.up,t.down);
+	t.up /= x;
+	t.down /= x;
+}
+
+void in(struct PhanSo t){
+	cout << t.up << "/" << t.down;
+}
+
+int main() {
+	struct PhanSo p;
+	nhap(p);
+	rutgon(p);
+	in(p);
+	return 0;
+}
+
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P5G#&@@@@@@&BP5B@@@@@@@
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@JP@@@@@@@@@@@@@&Y5@@@@@@

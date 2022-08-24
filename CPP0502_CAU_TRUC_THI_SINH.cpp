@@ -27,26 +27,37 @@
 
 using namespace std;
 
-int main(){
-	faster;
-    int t = 1;
-    cin >> t;cin.ignore();
-    while(t--){
-        int n,x;
-        cin >> n >> x;
-        vector <int> a;
-        a.assign(n + 1,0);
-        foru(i,1,n) cin >> a[i];
-        int c = 0;
-        foru(i,1,n) if(a[i] == x){
-            cout << i;
-            c = 1;
-            break;
-        }
-        if(c == 0) cout << -1;
-        cout << "\n";
+struct ThiSinh{
+    string name;
+    string dob;
+    double d1;
+    double d2;
+    double d3;
+    void nhap(){
+        getline(cin,name);
+        getline(cin,dob);
+        cin >> d1 >> d2 >> d3;
     }
+    void tong(){
+        printf("%.1lf", d1 + d2 + d3);
+    }
+};
+
+void nhap(struct ThiSinh &t){
+    t.nhap();
 }
+
+void in(struct ThiSinh t){
+    cout << t.name << " " << t.dob << " ";t.tong();
+}
+
+int main(){
+    struct ThiSinh A;
+    nhap(A);
+    in(A);
+    return 0;
+}
+
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P5G#&@@@@@@&BP5B@@@@@@@
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@JP@@@@@@@@@@@@@&Y5@@@@@@

@@ -36,10 +36,10 @@ int main(){
         cin >> n >> m;
         vector <int> a;
         a.assign(n + m + 1,0);
-        foru(i,1,n * m) cin >> a[i];
+        for(int i = 1;i <= n + m;i++) cin >> a[i];
         sort(a.begin() + 1,a.end());
-        foru(i,1,n + m) cout << a[i] << " ";
-        el;
+        for(int i = 1;i <= n + m;i++) cout << a[i] << " ";
+        cout << "\n";
     }
 }
 

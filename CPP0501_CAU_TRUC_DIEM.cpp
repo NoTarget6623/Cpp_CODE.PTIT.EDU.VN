@@ -11,6 +11,7 @@
 #include <queue>
 #include <set>
 #include <sstream>
+#include <iomanip>
 
 #define faster ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0)
 #define ll long long
@@ -27,25 +28,27 @@
 
 using namespace std;
 
+struct Point{
+    double x, y;
+};
+
+void input(struct Point &t){
+    cin >> t.x >> t.y;
+}
+
+double distance(struct Point A,struct Point B){
+    return sqrt((A.x - B.x) * (A.x - B.x) + (A.y - B.y)*(A.y - B.y));
+}
+
 int main(){
-	faster;
-    int t = 1;
-    cin >> t;cin.ignore();
+    struct Point A, B;
+    int t;
+    cin>>t;
     while(t--){
-        int n,x;
-        cin >> n >> x;
-        vector <int> a;
-        a.assign(n + 1,0);
-        foru(i,1,n) cin >> a[i];
-        int c = 0;
-        foru(i,1,n) if(a[i] == x){
-            cout << i;
-            c = 1;
-            break;
-        }
-        if(c == 0) cout << -1;
-        cout << "\n";
+        input(A); input(B);
+        cout << fixed << setprecision(4) << distance(A,B) << endl;
     }
+    return 0;
 }
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P5G#&@@@@@@&BP5B@@@@@@@

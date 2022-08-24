@@ -36,10 +36,11 @@ int main(){
         cin >> n;
         vector <int> a;
         a.assign(n + 1,0);
-        foru(i,1,n) cin >> a[i];
+        for(int i = 1;i <= n;i++) cin >> a[i];
         sort(a.begin() + 1,a.end());
-        cout << (a[n] - a[1] + 1) - n;
-        el;
+        int ans = (a[n] - a[1] + 1) - n;
+        foru(i,1,n) if(a[i] == a[i - 1]) ans++;
+        cout << ans << "\n";
     }
 }
 
